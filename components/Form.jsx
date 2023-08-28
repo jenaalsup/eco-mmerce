@@ -32,14 +32,14 @@ const Form = ({ type, post, setPost, submitting, handleSubmit }) => {
           <span className='font-satoshi font-semibold text-base text-gray-700'>
             Type of Listing{" "}
             <span className='font-normal'>
-              (#activewear, #swimwear, #tops, etc.)
+              (#tops, #bottoms, #dresses, #shoes, #outerwear, #intimates, #swimwear, #accessories)
             </span>
           </span>
           <input
             value={post.tag}
             onChange={(e) => setPost({ ...post, tag: e.target.value })}
             type='text'
-            placeholder='#Tag'
+            placeholder='Category (limited to one)'
             required
             className='form_input'
           />
