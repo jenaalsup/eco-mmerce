@@ -11,7 +11,7 @@ const CreateListing = () => {
   const { data: session } = useSession();
 
   const [submitting, setIsSubmitting] = useState(false);
-  const [post, setPost] = useState({ listing: "", tag: "", imageBase64: "" });
+  const [post, setPost] = useState({ listing: "", tag: "", imageBase64: "", link: "", price: "" });
 
   const createListing = async (e) => {
     e.preventDefault();
@@ -28,6 +28,8 @@ const CreateListing = () => {
           userId: session?.user.id,
           tag: post.tag,
           imageBase64: post.imageBase64,
+          link: post.link,
+          price: post.price,
         }),
       });
 
@@ -66,7 +68,6 @@ const CreateListing = () => {
       submitting={submitting}
       handleSubmit={createListing}
     >
-      {/* Add the below input field to your form to handle image uploads */}
       <input type="file" onChange={handleFileChange} />
     </Form>
   );

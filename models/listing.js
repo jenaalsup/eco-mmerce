@@ -16,7 +16,15 @@ const ListingSchema = new Schema({
   imageBase64: {
     type: String,
     required: [false]
-  }
+  },
+  link: {
+    type: String,
+    required: [true, 'Link is required.'],
+  },
+  price: {
+    type: String,
+    required: [true, 'Price is required.'],
+  },
 });
 
 const Listing = models.Listing || model('Listing', ListingSchema);

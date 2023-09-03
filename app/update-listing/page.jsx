@@ -10,7 +10,7 @@ const UpdateListing = () => {
   const searchParams = useSearchParams();
   const listingId = searchParams.get("id");
 
-  const [post, setPost] = useState({ listing: "", tag: "", imageBase64: "" });
+  const [post, setPost] = useState({ listing: "", tag: "", imageBase64: "", link: "", price: "" });
   const [submitting, setIsSubmitting] = useState(false);
 
   const convertToBase64 = (file) => {
@@ -30,7 +30,9 @@ const UpdateListing = () => {
       setPost({
         listing: data.listing,
         tag: data.tag,
-        imageBase64: data.imageBase64
+        imageBase64: data.imageBase64,
+        link: data.link,
+        price: data.price,
       });
     };
 
@@ -49,7 +51,9 @@ const UpdateListing = () => {
         body: JSON.stringify({
           listing: post.listing,
           tag: post.tag,
-          imageBase64: post.imageBase64
+          imageBase64: post.imageBase64,
+          link: post.link,
+          price: post.price,
         }),
       });
 

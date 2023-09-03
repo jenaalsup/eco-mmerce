@@ -2,7 +2,7 @@ import Listing from "@models/listing";
 import { connectToDB } from "@utils/database";
 
 export const POST = async (request) => {
-    const { userId, listing, tag, imageBase64 } = await request.json();
+    const { userId, listing, tag, imageBase64, link, price } = await request.json();
 
     try {
         await connectToDB();
@@ -11,7 +11,9 @@ export const POST = async (request) => {
             creator: userId,
             listing,
             tag,
-            imageBase64
+            imageBase64,
+            link,
+            price
         });
 
         await newListing.save();

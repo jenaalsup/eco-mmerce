@@ -58,6 +58,34 @@ const Form = ({ type, post, setPost, submitting, handleSubmit }) => {
             className='form_textarea '
           />
         </label>
+        
+         {/* New Field for Link */}
+        <label>
+          <span className='font-satoshi font-semibold text-base text-gray-700'>
+            Product Link
+          </span>
+          <input
+            value={post.link}
+            onChange={(e) => setPost({ ...post, link: e.target.value })}
+            type='text'
+            placeholder='Product Link'
+            className='form_input'
+          />
+        </label>
+
+        {/* New Field for Price */}
+        <label>
+          <span className='font-satoshi font-semibold text-base text-gray-700'>
+            Product Price
+          </span>
+          <input
+            value={post.price}
+            onChange={(e) => setPost({ ...post, price: e.target.value })}
+            type='text'
+            placeholder='Product Price'
+            className='form_input'
+          />
+        </label>
 
         <label>
           <span className='font-satoshi font-semibold text-base text-gray-700'>

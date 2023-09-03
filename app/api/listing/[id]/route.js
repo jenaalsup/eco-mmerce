@@ -16,7 +16,7 @@ export const GET = async (request, { params }) => {
 };
 
 export const PATCH = async (request, { params }) => {
-    const { listing, tag, imageBase64 } = await request.json();
+    const { listing, tag, imageBase64, link, price } = await request.json();
 
     try {
         await connectToDB();
@@ -32,6 +32,8 @@ export const PATCH = async (request, { params }) => {
         existingListing.listing = listing;
         existingListing.tag = tag;
         existingListing.imageBase64 = imageBase64;
+        existingListing.link = link;
+        existingListing.price = price;
 
         await existingListing.save();
 
@@ -44,8 +46,6 @@ export const PATCH = async (request, { params }) => {
 export const DELETE = async (request, { params }) => {
     try {
         await connectToDB();
-
-        // Find the product listing by ID and remove it
         await Listing.findByIdAndRemove(params.id);
 
         return new Response("Product Listing deleted successfully", { status: 200 });
