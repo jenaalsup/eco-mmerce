@@ -1,3 +1,6 @@
+The inspiration for this project was to simplify and encourage sustainable consumer choices by creating a marketplace for vetted, eco-friendly products.
+
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
