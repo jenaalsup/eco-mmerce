@@ -50,7 +50,7 @@ const ListingCard = ({ post, handleEdit, handleDelete, handleTagClick }) => {
       <img
         src={`data:image/png;base64,${post.imageBase64}`}
         alt='listing_image'
-        style={{ width: '80%', objectFit: 'cover', margin: '10px auto' }} // Added inline style here
+        style={{ width: '100%', objectFit: 'cover', margin: '10px auto' }}
       />
     )}
   

@@ -1,4 +1,5 @@
 import ListingCard from "./ListingCard";
+import '@styles/globals.css';
 
 const Profile = ({ name, desc, data, handleEdit, handleDelete }) => {
   return (
@@ -8,7 +9,7 @@ const Profile = ({ name, desc, data, handleEdit, handleDelete }) => {
       </h1>
       <p className='desc text-left'>{desc}</p>
 
-      <div className='mt-10 listing_layout'>
+      <div className='mt-10 listing_layout row-flex flex-center'>
         {data.map((post) => (
           <ListingCard
             key={post._id}
