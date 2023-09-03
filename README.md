@@ -1,37 +1,27 @@
+## Inspiration
+
 The inspiration for this project was to simplify and encourage sustainable consumer choices by creating a marketplace for vetted, eco-friendly products.
 
+## What it does
 
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+The website provides a user-friendly interface for sellers to list their eco-friendly products and enables users to easily search for and purchase these items. Google Authentication allows for quick login. There is also hashtag-based searching, and the ability to look at other user profiles.
 
-## Getting Started
+## How we built it
 
-First, run the development server:
+We built this app using Next.js. We used API Routes for creating and updating listings. Next-auth was used for Google Authentication, and mongoDB was used to store product listings and users, and to manage website activity. Our coding structure is based on the react framework. We have components that make up the reusable parts of the website, like the listing cards, and we have pages that implement these components, like the page for updating a listing. We used this Youtube video (https://youtu.be/wm5gMKuwSYk?si=-T-70suRtQSNxx0s) for learning Next.js from scratch, and for some of the styling. We added to the CSS styling, and we added functionality for images that was not present in the video.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+## Challenges we ran into
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+One challenge we faced was saving image data to display for a listing. This was difficult because our server expected a JSON response. This was easy to do with the product listing and with the tags because they are strings, which are easily convertible to JSON objects, but this was unclear with a file upload. The way we did this was by encoding the image to Base64 to send it as a JSON field.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## Accomplishments that we're proud of
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+We are proud to see a project like this through to the end. We (Jena and Ava) had talked a lot during school about sustainability on our campus, and ways we could make a difference, so we were so excited to bring one of our ideas to fruition.
 
-## Learn More
+## What we learned
 
-To learn more about Next.js, take a look at the following resources:
+This was our first time using Next.js, so we learned jsx and were introduced to client-side/server-side functionality. We learned through the process of debugging and became better programmers by following online forums and videos.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## What's next for Eco-Commerce
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+We would like to implement additional features like a vetting process for the products, the ability to leave reviews, and in-app purchases.
