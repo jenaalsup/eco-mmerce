@@ -20,7 +20,6 @@ const handler = NextAuth({
       return session;
     },
     async signIn({ account, profile, user, credentials }) {
-      try {
         await connectToDB();
 
         // check if user already exists
@@ -36,11 +35,6 @@ const handler = NextAuth({
         }
 
         return true
-      } 
-      catch {
-        console.log("Error checking if user exists: ", error.message);
-        return false
-      }
     },
   }
 })
