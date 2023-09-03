@@ -5,7 +5,7 @@ import Provider from '@components/Provider';
 
 export const metadata = {
     title: "eco-mmerce",
-    description: 'Shop your favorite sustainable styles'
+    description: 'Shop your favorite sustainable products'
 }
 
 const RootLayout = ({ children }) => {
