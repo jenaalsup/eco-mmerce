@@ -11,7 +11,7 @@ const CreateListing = () => {
   const { data: session } = useSession();
 
   const [submitting, setIsSubmitting] = useState(false);
-  const [post, setPost] = useState({ listing: "", tag: "" });
+  const [post, setPost] = useState({ listing: "", tag: "", imageBase64: "" });
 
   const createListing = async (e) => {
     e.preventDefault();
@@ -20,10 +20,14 @@ const CreateListing = () => {
     try {
       const response = await fetch("/api/listing/new", {
         method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
         body: JSON.stringify({
           listing: post.listing,
           userId: session?.user.id,
           tag: post.tag,
+          imageBase64: post.imageBase64,
         }),
       });
 
@@ -37,6 +41,23 @@ const CreateListing = () => {
     }
   };
 
+  const convertToBase64 = (file) => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => resolve(reader.result.split(',')[1]);
+      reader.onerror = (error) => reject(error);
+    });
+  }
+
+  const handleFileChange = async (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const base64String = await convertToBase64(file);
+      setPost({ ...post, imageBase64: base64String });
+    }
+  }
+
   return (
     <Form
       type='Create'
@@ -44,8 +65,12 @@ const CreateListing = () => {
       setPost={setPost}
       submitting={submitting}
       handleSubmit={createListing}
-    />
+    >
+      {/* Add the below input field to your form to handle image uploads */}
+      <input type="file" onChange={handleFileChange} />
+    </Form>
   );
 };
 
 export default CreateListing;
+``

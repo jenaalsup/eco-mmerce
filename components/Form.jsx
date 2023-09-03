@@ -1,6 +1,25 @@
 import Link from "next/link";
 
+
 const Form = ({ type, post, setPost, submitting, handleSubmit }) => {
+  
+  const convertToBase64 = (file) => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => resolve(reader.result.split(',')[1]);
+      reader.onerror = (error) => reject(error);
+    });
+  }
+
+  const handleFileChange = async (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const base64String = await convertToBase64(file);
+      setPost({ ...post, imageBase64: base64String });
+    }
+  }
+
   return (
     <section className='w-full max-w-full flex-start flex-col'>
       <h1 className='head_text text-left'>
@@ -14,6 +33,18 @@ const Form = ({ type, post, setPost, submitting, handleSubmit }) => {
         onSubmit={handleSubmit}
         className='mt-10 w-full max-w-2xl flex flex-col gap-7 glassmorphism'
       >
+        <label>
+          <span className='font-satoshi font-semibold text-base text-gray-700'>
+            Upload an Image
+          </span>
+
+          <input 
+            type="file" 
+            onChange={handleFileChange} 
+            className='form_input'
+          />
+        </label>
+
         <label>
           <span className='font-satoshi font-semibold text-base text-gray-700'>
             Your Product Listing

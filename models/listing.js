@@ -12,6 +12,10 @@ const ListingSchema = new Schema({
   tag: {
     type: String,
     required: [true, 'Tag is required.'],
+  },
+  imageBase64: {
+    type: String,
+    required: [false]
   }
 });
 

@@ -3,20 +3,20 @@ import { connectToDB } from "@utils/database";
 
 export const GET = async (request, { params }) => {
     try {
-        await connectToDB()
+        await connectToDB();
 
-        const listing = await Listing.findById(params.id).populate("creator")
+        const listing = await Listing.findById(params.id).populate("creator");
         if (!listing) return new Response("Product Listing Not Found", { status: 404 });
 
-        return new Response(JSON.stringify(listing), { status: 200 })
+        return new Response(JSON.stringify(listing), { status: 200 });
 
     } catch (error) {
         return new Response("Internal Server Error", { status: 500 });
     }
-}
+};
 
 export const PATCH = async (request, { params }) => {
-    const { listing, tag } = await request.json();
+    const { listing, tag, imageBase64 } = await request.json();
 
     try {
         await connectToDB();
@@ -31,6 +31,7 @@ export const PATCH = async (request, { params }) => {
         // Update the product listing with new data
         existingListing.listing = listing;
         existingListing.tag = tag;
+        existingListing.imageBase64 = imageBase64;
 
         await existingListing.save();
 

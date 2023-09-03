@@ -10,8 +10,17 @@ const UpdateListing = () => {
   const searchParams = useSearchParams();
   const listingId = searchParams.get("id");
 
-  const [post, setPost] = useState({ listing: "", tag: "", });
+  const [post, setPost] = useState({ listing: "", tag: "", imageBase64: "" });
   const [submitting, setIsSubmitting] = useState(false);
+
+  const convertToBase64 = (file) => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => resolve(reader.result.split(',')[1]);
+      reader.onerror = (error) => reject(error);
+    });
+  }
 
   useEffect(() => {
     const getListingDetails = async () => {
@@ -21,6 +30,7 @@ const UpdateListing = () => {
       setPost({
         listing: data.listing,
         tag: data.tag,
+        imageBase64: data.imageBase64
       });
     };
 
@@ -39,6 +49,7 @@ const UpdateListing = () => {
         body: JSON.stringify({
           listing: post.listing,
           tag: post.tag,
+          imageBase64: post.imageBase64
         }),
       });
 

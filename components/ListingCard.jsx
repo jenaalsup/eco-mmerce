@@ -27,7 +27,15 @@ const ListingCard = ({ post, handleEdit, handleDelete, handleTagClick }) => {
   };
 
   return (
-    <div className='listing_card'>
+    <div className='listing_card' style={{ borderRadius: '12px', border: '1px solid #12683E', padding: '15px', margin: '10px' }}>
+      {post.imageBase64 && (
+        <img
+          src={`data:image/png;base64,${post.imageBase64}`}
+          alt='listing_image'
+          style={{ width: '100%', objectFit: 'cover' }} // Added inline style here
+        />
+      )}
+
       <div className='flex justify-between items-start gap-5'>
         <div
           className='flex-1 flex justify-start items-center gap-3 cursor-pointer'
