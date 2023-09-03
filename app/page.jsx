@@ -6,11 +6,11 @@ const Home = () => {
         <h1 className="head_text text-center">
             Discover & Shop
             <br className="max-md:hiden" />
-            <span className="orange_gradient text-center">Sustainable Styles</span>
+            <span className="orange_gradient text-center">Sustainable Products</span>
         </h1>
         <p className="desc text-center">
             Eco-mmerce is an online shopping hub that markets a curated list of
-            clothing items from verified sustainable brands. Build a more 
+            items from verified sustainable brands. Build a more 
             sustainable future with Eco-mmerce.
         </p>
 
